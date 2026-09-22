@@ -19,7 +19,7 @@ app.state.limiter = limiter
 app.add_middleware(SlowAPIMiddleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origin.strip() for origin in settings.allowed_origins],
+    allow_origins=[origin.strip() for origin in settings.allowed_origins.split(",")],
     allow_methods=["GET","POST","PUT","PATCH","DELETE"]
 )
 app.include_router(master_data.router)
